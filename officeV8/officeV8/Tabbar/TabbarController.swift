@@ -9,13 +9,27 @@
 import UIKit
 
 class TabbarController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        getTabbarColor(General().tabbarColor)
+        
+        addChildController(WebController(), title: "工作台", imageName: "web")
+        addChildController(SettingController(), title: "设置", imageName: "setting")
     }
-
-
-
+    
+    func getTabbarColor(_ color: UIColor) {
+        UITabBar.appearance().tintColor = .white
+        UITabBar.appearance().barTintColor = color
+        UITabBar.appearance().isTranslucent = false
+    }
+    
+    func addChildController(_ vc: UIViewController, title aTitle:String, imageName aImageName: String) {
+        vc.tabBarItem.image = UIImage.init(named: aImageName)?.withRenderingMode(.alwaysOriginal)
+        vc.tabBarItem.selectedImage = UIImage.init(named: aImageName + "_HL")?.withRenderingMode(.alwaysOriginal)
+        let navi:NaviController = NaviController(rootViewController: vc)
+        vc.title = aTitle
+        addChildViewController(navi)
+    }
 }

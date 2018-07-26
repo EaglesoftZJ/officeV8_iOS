@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3530B5A62109DD2E00A5BD4D /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3530B5A52109DD2E00A5BD4D /* UserInfo.swift */; };
+		3530B5B32109F0DB00A5BD4D /* SGQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3530B5AB2109F0DB00A5BD4D /* SGQRCode.bundle */; };
+		3530B5B42109F0DB00A5BD4D /* UIImage+SGHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3530B5AD2109F0DB00A5BD4D /* UIImage+SGHelper.m */; };
+		3530B5B52109F0DB00A5BD4D /* SGQRCodeScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3530B5B02109F0DB00A5BD4D /* SGQRCodeScanningView.m */; };
+		3530B5B62109F0DB00A5BD4D /* SGQRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3530B5B22109F0DB00A5BD4D /* SGQRCodeManager.m */; };
+		3530B5B82109F11400A5BD4D /* ScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3530B5B72109F11400A5BD4D /* ScanController.swift */; };
 		356ED2EE2103842000C6030A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356ED2ED2103842000C6030A /* AppDelegate.swift */; };
 		356ED2F52103842100C6030A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 356ED2F42103842100C6030A /* Assets.xcassets */; };
-		356ED2F82103842100C6030A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 356ED2F62103842100C6030A /* LaunchScreen.storyboard */; };
 		356ED3032103842200C6030A /* officeV8Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356ED3022103842200C6030A /* officeV8Tests.swift */; };
 		356ED30E2103842200C6030A /* officeV8UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356ED30D2103842200C6030A /* officeV8UITests.swift */; };
 		358CC9802104770C00669A64 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 358CC97F2104770C00669A64 /* Podfile */; };
@@ -17,6 +22,19 @@
 		358CC98721047C9C00669A64 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358CC98621047C9C00669A64 /* TabbarController.swift */; };
 		358CC98921047CD000669A64 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358CC98821047CD000669A64 /* SettingController.swift */; };
 		358CC98B21047D0200669A64 /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358CC98A21047D0200669A64 /* WebController.swift */; };
+		358CC9C82106BB3900669A64 /* UIColor+RGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358CC9C72106BB3900669A64 /* UIColor+RGBColor.swift */; };
+		358CC9CA2106CEAC00669A64 /* NaviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358CC9C92106CEAC00669A64 /* NaviController.swift */; };
+		358CCAF72106FDAA00669A64 /* 选择.png in Resources */ = {isa = PBXBuildFile; fileRef = 358CCAF12106FDAA00669A64 /* 选择.png */; };
+		358CCAF82106FDAA00669A64 /* 密码.png in Resources */ = {isa = PBXBuildFile; fileRef = 358CCAF22106FDAA00669A64 /* 密码.png */; };
+		358CCAF92106FDAA00669A64 /* loginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 358CCAF32106FDAA00669A64 /* loginBackground.png */; };
+		358CCAFA2106FDAA00669A64 /* 用户名.png in Resources */ = {isa = PBXBuildFile; fileRef = 358CCAF42106FDAA00669A64 /* 用户名.png */; };
+		358CCAFB2106FDAA00669A64 /* backgroundImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 358CCAF52106FDAA00669A64 /* backgroundImg.jpg */; };
+		358CCAFC2106FDAA00669A64 /* 选择公司.png in Resources */ = {isa = PBXBuildFile; fileRef = 358CCAF62106FDAA00669A64 /* 选择公司.png */; };
+		358CCAFF210701B400669A64 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358CCAFE210701B400669A64 /* General.swift */; };
+		358CCB0A210717D500669A64 /* CompanyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358CCB09210717D500669A64 /* CompanyListController.swift */; };
+		358CCB0C210718A100669A64 /* NetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358CCB0B210718A100669A64 /* NetManager.swift */; };
+		358CCB0F2108127E00669A64 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358CCB0E2108127E00669A64 /* Alerts.swift */; };
+		358CCB11210815AE00669A64 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358CCB10210815AE00669A64 /* Toast.swift */; };
 		CC1998AC024329A1F602320A /* Pods_officeV8.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 765EF7B400FC371F28C9D1B6 /* Pods_officeV8.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,10 +56,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3530B5A52109DD2E00A5BD4D /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		3530B5AA2109F0DB00A5BD4D /* SGQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGQRCode.h; sourceTree = "<group>"; };
+		3530B5AB2109F0DB00A5BD4D /* SGQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SGQRCode.bundle; sourceTree = "<group>"; };
+		3530B5AD2109F0DB00A5BD4D /* UIImage+SGHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SGHelper.m"; sourceTree = "<group>"; };
+		3530B5AE2109F0DB00A5BD4D /* UIImage+SGHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SGHelper.h"; sourceTree = "<group>"; };
+		3530B5AF2109F0DB00A5BD4D /* SGQRCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGQRCodeManager.h; sourceTree = "<group>"; };
+		3530B5B02109F0DB00A5BD4D /* SGQRCodeScanningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeScanningView.m; sourceTree = "<group>"; };
+		3530B5B12109F0DB00A5BD4D /* SGQRCodeScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGQRCodeScanningView.h; sourceTree = "<group>"; };
+		3530B5B22109F0DB00A5BD4D /* SGQRCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeManager.m; sourceTree = "<group>"; };
+		3530B5B72109F11400A5BD4D /* ScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanController.swift; sourceTree = "<group>"; };
 		356ED2EA2103842000C6030A /* officeV8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = officeV8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		356ED2ED2103842000C6030A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		356ED2F42103842100C6030A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		356ED2F72103842100C6030A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		356ED2F92103842100C6030A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		356ED2FE2103842200C6030A /* officeV8Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = officeV8Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		356ED3022103842200C6030A /* officeV8Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = officeV8Tests.swift; sourceTree = "<group>"; };
@@ -54,6 +81,23 @@
 		358CC98621047C9C00669A64 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		358CC98821047CD000669A64 /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
 		358CC98A21047D0200669A64 /* WebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebController.swift; sourceTree = "<group>"; };
+		358CC9C72106BB3900669A64 /* UIColor+RGBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBColor.swift"; sourceTree = "<group>"; };
+		358CC9C92106CEAC00669A64 /* NaviController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviController.swift; sourceTree = "<group>"; };
+		358CCAF12106FDAA00669A64 /* 选择.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选择.png"; sourceTree = "<group>"; };
+		358CCAF22106FDAA00669A64 /* 密码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码.png"; sourceTree = "<group>"; };
+		358CCAF32106FDAA00669A64 /* loginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBackground.png; sourceTree = "<group>"; };
+		358CCAF42106FDAA00669A64 /* 用户名.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "用户名.png"; sourceTree = "<group>"; };
+		358CCAF52106FDAA00669A64 /* backgroundImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroundImg.jpg; sourceTree = "<group>"; };
+		358CCAF62106FDAA00669A64 /* 选择公司.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选择公司.png"; sourceTree = "<group>"; };
+		358CCAFE210701B400669A64 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		358CCB002107074E00669A64 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		358CCB022107074E00669A64 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		358CCB042107074E00669A64 /* WebViewJavascriptBridge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WebViewJavascriptBridge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		358CCB09210717D500669A64 /* CompanyListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyListController.swift; sourceTree = "<group>"; };
+		358CCB0B210718A100669A64 /* NetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetManager.swift; sourceTree = "<group>"; };
+		358CCB0D21071C7A00669A64 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		358CCB0E2108127E00669A64 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		358CCB10210815AE00669A64 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		5D756B45E619BDFA2F8533E9 /* Pods-officeV8.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-officeV8.release.xcconfig"; path = "Pods/Target Support Files/Pods-officeV8/Pods-officeV8.release.xcconfig"; sourceTree = "<group>"; };
 		765EF7B400FC371F28C9D1B6 /* Pods_officeV8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_officeV8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		782FD5DB5F4682658B52F0F3 /* Pods-officeV8.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-officeV8.debug.xcconfig"; path = "Pods/Target Support Files/Pods-officeV8/Pods-officeV8.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +138,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3530B5A92109F0DB00A5BD4D /* SGQRCode */ = {
+			isa = PBXGroup;
+			children = (
+				3530B5AA2109F0DB00A5BD4D /* SGQRCode.h */,
+				3530B5AB2109F0DB00A5BD4D /* SGQRCode.bundle */,
+				3530B5AC2109F0DB00A5BD4D /* Category */,
+				3530B5AF2109F0DB00A5BD4D /* SGQRCodeManager.h */,
+				3530B5B12109F0DB00A5BD4D /* SGQRCodeScanningView.h */,
+				3530B5B02109F0DB00A5BD4D /* SGQRCodeScanningView.m */,
+				3530B5B22109F0DB00A5BD4D /* SGQRCodeManager.m */,
+			);
+			path = SGQRCode;
+			sourceTree = "<group>";
+		};
+		3530B5AC2109F0DB00A5BD4D /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				3530B5AD2109F0DB00A5BD4D /* UIImage+SGHelper.m */,
+				3530B5AE2109F0DB00A5BD4D /* UIImage+SGHelper.h */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		356ED2E12103842000C6030A = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +187,8 @@
 		356ED2EC2103842000C6030A /* officeV8 */ = {
 			isa = PBXGroup;
 			children = (
+				358CCAFD210701A000669A64 /* General */,
+				358CC9C62106BA3C00669A64 /* Extension */,
 				356ED3202103877D00C6030A /* Other */,
 				356ED31F2103873E00C6030A /* App */,
 				356ED31E2103873600C6030A /* Setting */,
@@ -152,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				358CC98621047C9C00669A64 /* TabbarController.swift */,
+				358CC9C92106CEAC00669A64 /* NaviController.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -167,7 +237,11 @@
 		356ED31D2103873000C6030A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				358CCAF02106FCB300669A64 /* Image */,
 				358CC98421047C5900669A64 /* LoginController.swift */,
+				358CCB09210717D500669A64 /* CompanyListController.swift */,
+				3530B5B72109F11400A5BD4D /* ScanController.swift */,
+				3530B5A92109F0DB00A5BD4D /* SGQRCode */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -192,15 +266,51 @@
 			isa = PBXGroup;
 			children = (
 				356ED2F42103842100C6030A /* Assets.xcassets */,
-				356ED2F62103842100C6030A /* LaunchScreen.storyboard */,
 				356ED2F92103842100C6030A /* Info.plist */,
+				358CCB0D21071C7A00669A64 /* Header.h */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		358CC9C62106BA3C00669A64 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				358CCB0E2108127E00669A64 /* Alerts.swift */,
+				358CC9C72106BB3900669A64 /* UIColor+RGBColor.swift */,
+				358CCB10210815AE00669A64 /* Toast.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		358CCAF02106FCB300669A64 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				358CCAF22106FDAA00669A64 /* 密码.png */,
+				358CCAF12106FDAA00669A64 /* 选择.png */,
+				358CCAF62106FDAA00669A64 /* 选择公司.png */,
+				358CCAF42106FDAA00669A64 /* 用户名.png */,
+				358CCAF52106FDAA00669A64 /* backgroundImg.jpg */,
+				358CCAF32106FDAA00669A64 /* loginBackground.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		358CCAFD210701A000669A64 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				358CCAFE210701B400669A64 /* General.swift */,
+				3530B5A52109DD2E00A5BD4D /* UserInfo.swift */,
+				358CCB0B210718A100669A64 /* NetManager.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		B250F73FBCF42A2A337118B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				358CCB002107074E00669A64 /* Alamofire.framework */,
+				358CCB022107074E00669A64 /* Masonry.framework */,
+				358CCB042107074E00669A64 /* WebViewJavascriptBridge.framework */,
 				765EF7B400FC371F28C9D1B6 /* Pods_officeV8.framework */,
 			);
 			name = Frameworks;
@@ -276,6 +386,7 @@
 				TargetAttributes = {
 					356ED2E92103842000C6030A = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					356ED2FD2103842200C6030A = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -312,9 +423,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				358CCAFA2106FDAA00669A64 /* 用户名.png in Resources */,
+				358CCAF82106FDAA00669A64 /* 密码.png in Resources */,
 				358CC9802104770C00669A64 /* Podfile in Resources */,
-				356ED2F82103842100C6030A /* LaunchScreen.storyboard in Resources */,
+				358CCAF92106FDAA00669A64 /* loginBackground.png in Resources */,
+				3530B5B32109F0DB00A5BD4D /* SGQRCode.bundle in Resources */,
+				358CCAFB2106FDAA00669A64 /* backgroundImg.jpg in Resources */,
 				356ED2F52103842100C6030A /* Assets.xcassets in Resources */,
+				358CCAF72106FDAA00669A64 /* 选择.png in Resources */,
+				358CCAFC2106FDAA00669A64 /* 选择公司.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,12 +460,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-officeV8/Pods-officeV8-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
 			);
@@ -383,10 +502,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				358CC98921047CD000669A64 /* SettingController.swift in Sources */,
+				3530B5B82109F11400A5BD4D /* ScanController.swift in Sources */,
+				358CCB11210815AE00669A64 /* Toast.swift in Sources */,
+				358CC9CA2106CEAC00669A64 /* NaviController.swift in Sources */,
+				3530B5B42109F0DB00A5BD4D /* UIImage+SGHelper.m in Sources */,
+				358CCB0A210717D500669A64 /* CompanyListController.swift in Sources */,
+				358CCB0C210718A100669A64 /* NetManager.swift in Sources */,
+				358CC9C82106BB3900669A64 /* UIColor+RGBColor.swift in Sources */,
 				356ED2EE2103842000C6030A /* AppDelegate.swift in Sources */,
 				358CC98B21047D0200669A64 /* WebController.swift in Sources */,
 				358CC98721047C9C00669A64 /* TabbarController.swift in Sources */,
+				3530B5B52109F0DB00A5BD4D /* SGQRCodeScanningView.m in Sources */,
+				3530B5A62109DD2E00A5BD4D /* UserInfo.swift in Sources */,
+				358CCAFF210701B400669A64 /* General.swift in Sources */,
+				358CCB0F2108127E00669A64 /* Alerts.swift in Sources */,
 				358CC98521047C5900669A64 /* LoginController.swift in Sources */,
+				3530B5B62109F0DB00A5BD4D /* SGQRCodeManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,17 +551,6 @@
 			targetProxy = 356ED30A2103842200C6030A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		356ED2F62103842100C6030A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				356ED2F72103842100C6030A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		356ED3102103842200C6030A /* Debug */ = {
@@ -552,6 +672,8 @@
 			baseConfigurationReference = 782FD5DB5F4682658B52F0F3 /* Pods-officeV8.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D94R58LQ65;
 				INFOPLIST_FILE = "$(SRCROOT)/officeV8/Other/Info.plist";
@@ -560,10 +682,22 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"WebViewJavascriptBridge\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.egsoft.officeV8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/officeV8/Other/Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -572,6 +706,8 @@
 			baseConfigurationReference = 5D756B45E619BDFA2F8533E9 /* Pods-officeV8.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D94R58LQ65;
 				INFOPLIST_FILE = "$(SRCROOT)/officeV8/Other/Info.plist";
@@ -580,10 +716,21 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"WebViewJavascriptBridge\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.egsoft.officeV8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/officeV8/Other/Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};

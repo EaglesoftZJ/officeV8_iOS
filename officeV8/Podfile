@@ -6,4 +6,5 @@ target 'officeV8' do
     pod 'Alamofire', '~> 4.7.0'
     pod 'Masonry'
     pod 'WebViewJavascriptBridge'
+    pod 'MBProgressHUD'
 end  
