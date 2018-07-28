@@ -15,10 +15,12 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
     
     let wkWebView = WKWebView()
     var bridge = WebViewJavascriptBridge()
+    var tabbarFrame = CGRect()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tabbarFrame = (self.tabBarController?.tabBar.frame)!
         createWKweb()
     }
     
@@ -26,7 +28,8 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
         wkWebView.frame = General.haveBar()
         wkWebView.navigationDelegate = self
         wkWebView.uiDelegate = self
-        view.addSubview(wkWebView)
+//        view.addSubview(wkWebView)
+        view = wkWebView
         
         let config = WKWebViewConfiguration()
         config.userContentController = WKUserContentController()
@@ -47,16 +50,37 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         view.hideToast()
+        
+        bridge.registerHandler("moa.tokenOut") { (data, responseCallback) in
+            General.user.set(false, forKey: General().isLogin)
+            let statusBarWindow : UIView = UIApplication.shared.value(forKey: "statusBarWindow") as! UIView
+            let statusBar : UIView = statusBarWindow.value(forKey: "statusBar") as! UIView
+            if statusBar.responds(to:#selector(setter: UIView.backgroundColor)) {
+                statusBar.backgroundColor = .clear
+            }
+            General().noti.post(name: General().switchRootController, object: nil, userInfo: ["vc": "Login"])
+            responseCallback!(nil)
+        }
+        
         bridge.registerHandler("moa.isMain") { (data, responseCallback) in
             let isMain:Bool = (data as! String == "isMain") ? true : false
             self.tabBarController?.tabBar.isHidden = !isMain
+            self.tabBarController?.tabBar.frame = isMain ? self.tabbarFrame : .zero;
             self.wkWebView.frame = isMain ? General.haveBar() : General.noBar()
             responseCallback!(nil)
         }
+        
+        
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         view.hideToast()
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        self.alertUser(message) {
+            completionHandler()
+        }
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
