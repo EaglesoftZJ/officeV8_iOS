@@ -26,7 +26,7 @@ class NetManager: NSObject {
         let user_md5:String = ("ealgesoft_zaq1xsw2_cft6vgy7_"+username).md5()
         let pass_md5:String = ("ealgesoft_zaq1xsw2_cft6vgy7_"+password).md5()
         
-        self.eg_ajax(URL: "/rest/phone/JcYhglManage/login", parameters: ["zh": user_md5], callBack: { (res) in
+        self.eg_ajax(URL: "/rest/phone/JcYhglManage/login", parameters: ["zh": user_md5, "mm": pass_md5], callBack: { (res) in
             if res != nil {
                 let dic = res as! NSDictionary
                 if dic["statusCode"] as! Int == 2 {

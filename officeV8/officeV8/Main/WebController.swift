@@ -16,28 +16,35 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
     let wkWebView = WKWebView()
     var bridge = WebViewJavascriptBridge()
     var tabbarFrame = CGRect()
+    let app = UIApplication.shared.delegate as! AppDelegate
+    var isMain = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.frame = General.haveBar()
+        view.backgroundColor = .white
+        self.automaticallyAdjustsScrollViewInsets = false
         tabbarFrame = (self.tabBarController?.tabBar.frame)!
         createWKweb()
     }
     
     func createWKweb() {
-        wkWebView.frame = General.haveBar()
+//        wkWebView.frame = General.haveBar()
+        wkWebView.frame = view.bounds
         wkWebView.navigationDelegate = self
         wkWebView.uiDelegate = self
-//        view.addSubview(wkWebView)
-        view = wkWebView
+        wkWebView.scrollView.bounces = false
+        wkWebView.scrollView.bouncesZoom = false
         
         let config = WKWebViewConfiguration()
         config.userContentController = WKUserContentController()
         config.userContentController.add(self, name: "iOS")
         
-        let htmlPath = "http://127.0.0.1:8086/m/main"
-        view.showToast()
+        let htmlPath = "http://192.168.31.197:8086/m/main#"
         wkWebView.load(URLRequest.init(url:URL.init(string: htmlPath)!))
+        view.addSubview(wkWebView)
+        
+        view.showToast()
         
         WebViewJavascriptBridge.enableLogging()
         bridge = WebViewJavascriptBridge.init(forWebView: wkWebView)
@@ -45,6 +52,14 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
         bridge.disableJavscriptAlertBoxSafetyTimeout()
         bridge.registerHandler("moa.zh") { (data, responseCallback) in
             responseCallback!(General.user.object(forKey: General().info))
+        }
+        bridge.registerHandler("moa.fj") { (data, responseCallback) in
+            let fjlj = self.app.userInfo.companyIP + (data as! String).replacingOccurrences(of: "", with: "\"")
+            let fj = FjController()
+            fj.fjlj = fjlj
+            self.navigationController?.pushViewController(fj, animated: true)
+            self.hidesBottomBarWhenPushed = true
+            responseCallback!(nil)
         }
     }
     
@@ -63,15 +78,17 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
         }
         
         bridge.registerHandler("moa.isMain") { (data, responseCallback) in
-            let isMain:Bool = (data as! String == "isMain") ? true : false
-            self.tabBarController?.tabBar.isHidden = !isMain
-            self.tabBarController?.tabBar.frame = isMain ? self.tabbarFrame : .zero;
-            self.wkWebView.frame = isMain ? General.haveBar() : General.noBar()
+            self.isMain = (data as! String == "isMain") ? true : false
+            self.tabBarController?.tabBar.isHidden = !self.isMain
+            self.tabBarController?.tabBar.frame = self.isMain ? self.tabbarFrame : .zero;
+//            self.wkWebView.frame = isMain ? General.haveBar() : General.noBar()
+            self.view.frame = self.isMain ? General.haveBar() : General.noBar()
+            self.wkWebView.frame = self.view.bounds
             responseCallback!(nil)
         }
-        
-        
     }
+    
+    
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         view.hideToast()
@@ -90,17 +107,20 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let statusBarWindow : UIView = UIApplication.shared.value(forKey: "statusBarWindow") as! UIView
-        let statusBar : UIView = statusBarWindow.value(forKey: "statusBar") as! UIView
-        if statusBar.responds(to:#selector(setter: UIView.backgroundColor)) {
-            statusBar.backgroundColor = General().tabbarColor
+        if self.navigationController?.isNavigationBarHidden != true {
+            wkWebView.frame = General.noBar()
+            self.navigationController?.setNavigationBarHidden(true, animated: false)
+        } else {
+            
         }
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        if self.navigationController?.isNavigationBarHidden != false {
+            self.navigationController?.setNavigationBarHidden(false, animated: false)
+        }
     }
 }

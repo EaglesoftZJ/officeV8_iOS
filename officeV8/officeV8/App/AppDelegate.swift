@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         getCompanyList()
         
+        if #available(iOS 11.0, *) {
+            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
+        }
+        
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         window?.rootViewController = defaultViewController()

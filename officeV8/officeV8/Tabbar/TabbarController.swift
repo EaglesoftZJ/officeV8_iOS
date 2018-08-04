@@ -19,6 +19,16 @@ class TabbarController: UITabBarController {
         addChildController(SettingController(), title: "设置", imageName: "setting")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let statusBarWindow : UIView = UIApplication.shared.value(forKey: "statusBarWindow") as! UIView
+        let statusBar : UIView = statusBarWindow.value(forKey: "statusBar") as! UIView
+        if statusBar.responds(to:#selector(setter: UIView.backgroundColor)) {
+            statusBar.backgroundColor = General().tabbarColor
+        }
+    }
+    
     func getTabbarColor(_ color: UIColor) {
         UITabBar.appearance().tintColor = .white
         UITabBar.appearance().barTintColor = color
