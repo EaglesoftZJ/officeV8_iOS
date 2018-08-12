@@ -8,14 +8,22 @@
 
 import UIKit
 
-class SettingController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class SettingController: UIViewController,UITableViewDelegate,UITableViewDataSource,editDelegate {
+    func editXx(xxArr: [String]) {
+        grxxDetail[6] = xxArr[0]
+        grxxDetail[7] = xxArr[1]
+        grxxDetail[8] = xxArr[2]
+        grxxDetail[9] = xxArr[3]
+        table.reloadData()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 9
+            return 10
         } else {
             return 1
         }
@@ -62,6 +70,8 @@ class SettingController: UIViewController,UITableViewDelegate,UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "设置", style: .plain, target: self, action: #selector(edit))
+        
         info = General.user.object(forKey: General().info) as! NSDictionary
         
         table.frame = General.haveAllBar()
@@ -71,11 +81,17 @@ class SettingController: UIViewController,UITableViewDelegate,UITableViewDataSou
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(table)
         
-        grxxKey = ["账号", "姓名", "单位", "部门", "职务", "上级领导", "邮箱", "手机", "电话"]
-        grxxDetail = [info["zh"],info["xm"], info["dwmc"], info["bmmc"], info["zwmc"], info["sjldxm"], info["yx"], info["sj"], info["dh"]] as! [String]
+        grxxKey = ["账号", "姓名", "单位", "部门", "职务", "上级领导", "邮箱", "手机", "电话", "虚拟网"]
+        grxxDetail = [info["zh"],info["xm"], info["dwmc"], info["bmmc"], info["zwmc"], info["sjldxm"], info["yx"], info["sj"], info["dh"], info["xnw"]] as! [String]
         table.reloadData()
     }
     
+    @objc func edit() {
+        let editController = EditController()
+        editController.delegate = self
+        editController.xxArr = [info["yx"], info["sj"], info["dh"], info["xnw"]] as! [String]
+        self.navigationController?.pushViewController(editController, animated: true)
+    }
     
 }
 

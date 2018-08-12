@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 import WebViewJavascriptBridge
 import MBProgressHUD
+import MJRefresh
 
 class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler {
     
@@ -18,6 +19,8 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
     var tabbarFrame = CGRect()
     let app = UIApplication.shared.delegate as! AppDelegate
     var isMain = Bool()
+    var isReload = false
+    let header = MJRefreshNormalHeader()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,8 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
         view.backgroundColor = .white
         self.automaticallyAdjustsScrollViewInsets = false
         tabbarFrame = (self.tabBarController?.tabBar.frame)!
+        
+        view.showToast()
         createWKweb()
     }
     
@@ -33,26 +38,23 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
         wkWebView.frame = view.bounds
         wkWebView.navigationDelegate = self
         wkWebView.uiDelegate = self
-        wkWebView.scrollView.bounces = false
-        wkWebView.scrollView.bouncesZoom = false
         
-        let config = WKWebViewConfiguration()
-        config.userContentController = WKUserContentController()
-        config.userContentController.add(self, name: "iOS")
+        header.setRefreshingTarget(self, refreshingAction: #selector(webRefresh))
+        wkWebView.scrollView.mj_header = header
         
-        let htmlPath = "http://192.168.31.197:8086/m/main#"
+//        let htmlPath = "http://220.189.207.21:8581/mobile.html?isFrom=0"
+        let htmlPath = "http://127.0.0.1:8086/m/main"
         wkWebView.load(URLRequest.init(url:URL.init(string: htmlPath)!))
-        view.addSubview(wkWebView)
-        
-        view.showToast()
         
         WebViewJavascriptBridge.enableLogging()
         bridge = WebViewJavascriptBridge.init(forWebView: wkWebView)
         bridge.setWebViewDelegate(self)
         bridge.disableJavscriptAlertBoxSafetyTimeout()
+        
         bridge.registerHandler("moa.zh") { (data, responseCallback) in
             responseCallback!(General.user.object(forKey: General().info))
         }
+        
         bridge.registerHandler("moa.fj") { (data, responseCallback) in
             let fjlj = self.app.userInfo.companyIP + (data as! String).replacingOccurrences(of: "", with: "\"")
             let fj = FjController()
@@ -61,10 +63,6 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
             self.hidesBottomBarWhenPushed = true
             responseCallback!(nil)
         }
-    }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        view.hideToast()
         
         bridge.registerHandler("moa.tokenOut") { (data, responseCallback) in
             General.user.set(false, forKey: General().isLogin)
@@ -81,11 +79,19 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
             self.isMain = (data as! String == "isMain") ? true : false
             self.tabBarController?.tabBar.isHidden = !self.isMain
             self.tabBarController?.tabBar.frame = self.isMain ? self.tabbarFrame : .zero;
-//            self.wkWebView.frame = isMain ? General.haveBar() : General.noBar()
+            //            self.wkWebView.frame = isMain ? General.haveBar() : General.noBar()
             self.view.frame = self.isMain ? General.haveBar() : General.noBar()
             self.wkWebView.frame = self.view.bounds
+            self.wkWebView.scrollView.bounces = self.isMain
+            self.wkWebView.scrollView.bouncesZoom = self.isMain
             responseCallback!(nil)
         }
+        
+        view.addSubview(wkWebView)
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        view.hideToast()
     }
     
     
@@ -102,6 +108,11 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         
+    }
+    
+    @objc func webRefresh() {
+        wkWebView.reload()
+        wkWebView.scrollView.mj_header.endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {

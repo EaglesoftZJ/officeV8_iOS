@@ -31,16 +31,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         general.noti.addObserver(self, selector: #selector(switchRootViewController), name: general.switchRootController, object: nil)
-        
+    
         return true
     }
-
+    
     func defaultViewController() -> UIViewController {
-        if General.user.bool(forKey: general.isLogin) == true {
-            return TabbarController()
-        } else {
-            return LoginController()
-        }
+        return LoginController()
+//        if General.user.bool(forKey: general.isLogin) == true {
+//            return TabbarController()
+//        } else {
+//            return LoginController()
+//        }
     }
     
     @objc func switchRootViewController(_ n: Notification) {
@@ -48,6 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if dict["vc"] as! String == "Main" {
             window?.rootViewController = TabbarController()
         } else if dict["vc"] as! String == "Login" {
+            var dic = General.user.dictionary(forKey: General.chooseCompany)
+            dic!["check"] = false
+            General.user.set(dic, forKey: General.chooseCompany)
             window?.rootViewController = LoginController()
         } else {
             window?.rootViewController = defaultViewController()
@@ -56,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func getCompanyList() {
         if General.user.array(forKey: General.companyList) == nil || General.user.object(forKey: General.chooseCompany) == nil {
-            let company = ["egName": userInfo.companyName, "egAddress": userInfo.companyIP, "account": userInfo.account, "password": userInfo.password]
+            let company = ["egName": userInfo.companyName, "egAddress": userInfo.companyIP, "account": userInfo.account, "password": userInfo.password, "check": false] as [String : Any]
             General.user.set([company], forKey: General.companyList)
             General.user.set(company, forKey: General.chooseCompany)
         }
@@ -88,7 +92,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         
     }
-
-
 }
 

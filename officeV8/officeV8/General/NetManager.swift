@@ -15,7 +15,7 @@ class NetManager: NSObject {
         let companyIP:String = AppDelegate().userInfo.companyIP + urlString
         Alamofire.request(companyIP, method: .post, parameters: param).responseJSON { (response) in
             guard let result = response.result.value else {
-                failBack(response.result.error!)
+                failBack("服务器连接失败")
                 return
             }
             callBack(result)
@@ -36,7 +36,25 @@ class NetManager: NSObject {
                 }
             }
         }) { (err) in
-            failBack(err as? String)
+            failBack("服务器连接错误")
+        }
+    }
+    
+    class func saveInfo_ajax(yx: String, sj: String, dh: String, xnw: String, callBack: @escaping (_ responseObject: String?)->(), failBack: @escaping (_ responseObject: String?)->()) {
+        let companyIP:String = AppDelegate().userInfo.companyIP + "/rest/JcYhglManage/modifyUserInfo"
+        let info:NSDictionary = General.user.object(forKey: General().info) as! NSDictionary
+        let token = (info["tokenObj"] as! NSDictionary)["token"] as! String
+        Alamofire.request(companyIP, method: .post, parameters: ["email": yx, "phone": sj, "tel": dh, "xnw": xnw], encoding: JSONEncoding.default, headers: ["X-Auth-Token": token]).validate(statusCode: 200..<300).validate(contentType: ["application/json"]).responseJSON { (response) in
+            guard let result = response.result.value else {
+                failBack("error")
+                return
+            }
+            let dic = result as! NSDictionary
+            if dic["statusCode"] as! Int == 2 {
+                callBack("成功")
+            } else {
+                failBack(dic["errorReason"] as? String)
+            }
         }
     }
 }

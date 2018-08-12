@@ -18,6 +18,8 @@ class LoginController: UIViewController, UITextFieldDelegate,companyListDelegate
     let companyBtn = UIButton()
     let companyLabel = UILabel()
     var company = NSDictionary()
+    let checkRemind = UIButton()
+    var isChecked = false
     
     let appStyle = General()
     var app = AppDelegate()
@@ -59,7 +61,7 @@ class LoginController: UIViewController, UITextFieldDelegate,companyListDelegate
             General.user.set(true, forKey: General().isLogin)
             userDefault.set(res, forKey: self.appStyle.info)
             
-            let dic = ["egName": self.app.userInfo.companyName, "egAddress": self.app.userInfo.companyIP, "account": self.userField.text!, "password": self.pwdField.text!]
+            let dic = ["egName": self.app.userInfo.companyName, "egAddress": self.app.userInfo.companyIP, "account": self.userField.text!, "password": self.pwdField.text!, "check": self.isChecked] as [String : Any]
             userDefault.set(dic, forKey: General.chooseCompany)
             
             self.getAccountAndPassword(dic: dic as NSDictionary)
@@ -83,7 +85,7 @@ class LoginController: UIViewController, UITextFieldDelegate,companyListDelegate
             self.appStyle.noti.post(name: self.appStyle.switchRootController, object: nil, userInfo: ["vc": "Main"])
         }) { (err) in
             self.view.hideToast()
-            self.alertUser("服务器连接错误")
+            self.alertUser(err!)
         }
     }
     
@@ -114,8 +116,22 @@ class LoginController: UIViewController, UITextFieldDelegate,companyListDelegate
         companyLabel.text = app.userInfo.companyName
         userField.text = app.userInfo.account
         pwdField.text = app.userInfo.password
+        
+        let dic = General.user.dictionary(forKey: General.chooseCompany)
+        isChecked = dic!["check"] as! Bool
+        checkRemind.isSelected = isChecked
+        checkRemind.setImage(isChecked ? UIImage.init(named: "记住") : UIImage.init(named: "不记住"), for: .normal)
+        if isChecked {
+            loginAction()
+        }
     }
 
+    @objc func checkAutoLogin(button:UIButton){
+        button.isSelected = !button.isSelected
+        isChecked = button.isSelected ? true : false
+        button.setImage(button.isSelected ? UIImage.init(named: "记住") : UIImage.init(named: "不记住"), for: .normal)
+    }
+    
     func setView() {
         view.addSubview(backgroundImgView)
         view.addSubview(loginBtn)
@@ -123,6 +139,7 @@ class LoginController: UIViewController, UITextFieldDelegate,companyListDelegate
         view.addSubview(pwdField)
         view.addSubview(companyLabel)
         view.addSubview(companyBtn)
+        view.addSubview(checkRemind)
         
         backgroundImgView.image = UIImage.init(named: "backgroundImg.jpg")
         backgroundImgView.frame = view.frame;
@@ -160,6 +177,15 @@ class LoginController: UIViewController, UITextFieldDelegate,companyListDelegate
         createLine(h: 608)
         createLine(h: 716)
         createLine(h: 824)
+        
+        checkRemind.frame = CGRect(x:appStyle.kScaleW(w: 50),y:appStyle.kScaleH(h: 864),width:appStyle.kScaleW(w: 280),height:appStyle.kScaleH(h: 30))
+        checkRemind.setImage(UIImage.init(named: "不记住"), for: .normal)
+        checkRemind.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 14)
+        checkRemind.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        checkRemind.imageEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
+        checkRemind.setTitle("自动登录", for: .normal)
+        checkRemind.setTitleColor(UIColor.white, for: .normal)
+        checkRemind.addTarget(self, action: #selector(checkAutoLogin(button:)), for: .touchUpInside)
         
         loginBtn.mas_makeConstraints { (make:MASConstraintMaker!) in
             make.bottom.mas_equalTo()(view.mas_bottom)?.setOffset(appStyle.kScaleH(h: -255))

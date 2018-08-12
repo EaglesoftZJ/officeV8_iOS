@@ -14,6 +14,8 @@
 		3530B5B62109F0DB00A5BD4D /* SGQRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3530B5B22109F0DB00A5BD4D /* SGQRCodeManager.m */; };
 		3530B5B82109F11400A5BD4D /* ScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3530B5B72109F11400A5BD4D /* ScanController.swift */; };
 		356E6AD1211140CD0028616B /* FjController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E6AD0211140CD0028616B /* FjController.swift */; };
+		356E6AD921198FCE0028616B /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E6AD821198FCE0028616B /* EditController.swift */; };
+		356E6B34211BD9C20028616B /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E6B33211BD9C20028616B /* Field.swift */; };
 		356ED2EE2103842000C6030A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356ED2ED2103842000C6030A /* AppDelegate.swift */; };
 		356ED2F52103842100C6030A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 356ED2F42103842100C6030A /* Assets.xcassets */; };
 		356ED3032103842200C6030A /* officeV8Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356ED3022103842200C6030A /* officeV8Tests.swift */; };
@@ -68,6 +70,8 @@
 		3530B5B22109F0DB00A5BD4D /* SGQRCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeManager.m; sourceTree = "<group>"; };
 		3530B5B72109F11400A5BD4D /* ScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanController.swift; sourceTree = "<group>"; };
 		356E6AD0211140CD0028616B /* FjController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FjController.swift; sourceTree = "<group>"; };
+		356E6AD821198FCE0028616B /* EditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditController.swift; sourceTree = "<group>"; };
+		356E6B33211BD9C20028616B /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		356ED2EA2103842000C6030A /* officeV8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = officeV8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		356ED2ED2103842000C6030A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		356ED2F42103842100C6030A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				358CC98821047CD000669A64 /* SettingController.swift */,
+				356E6AD821198FCE0028616B /* EditController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				358CCB0E2108127E00669A64 /* Alerts.swift */,
 				358CC9C72106BB3900669A64 /* UIColor+RGBColor.swift */,
 				358CCB10210815AE00669A64 /* Toast.swift */,
+				356E6B33211BD9C20028616B /* Field.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -464,6 +470,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-officeV8/Pods-officeV8-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
 			);
@@ -471,6 +478,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
 			);
@@ -514,7 +522,9 @@
 				358CCB0C210718A100669A64 /* NetManager.swift in Sources */,
 				358CC9C82106BB3900669A64 /* UIColor+RGBColor.swift in Sources */,
 				356ED2EE2103842000C6030A /* AppDelegate.swift in Sources */,
+				356E6B34211BD9C20028616B /* Field.swift in Sources */,
 				358CC98B21047D0200669A64 /* WebController.swift in Sources */,
+				356E6AD921198FCE0028616B /* EditController.swift in Sources */,
 				358CC98721047C9C00669A64 /* TabbarController.swift in Sources */,
 				3530B5B52109F0DB00A5BD4D /* SGQRCodeScanningView.m in Sources */,
 				3530B5A62109DD2E00A5BD4D /* UserInfo.swift in Sources */,

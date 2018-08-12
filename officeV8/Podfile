@@ -7,4 +7,5 @@ target 'officeV8' do
     pod 'Masonry'
     pod 'WebViewJavascriptBridge'
     pod 'MBProgressHUD'
+    pod 'MJRefresh', '~> 3.1.15.3'
 end  

@@ -2,12 +2,14 @@ PODS:
   - Alamofire (4.7.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
+  - MJRefresh (3.1.15.3)
   - WebViewJavascriptBridge (6.0.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7.0)
   - Masonry
   - MBProgressHUD
+  - MJRefresh (~> 3.1.15.3)
   - WebViewJavascriptBridge
 
 SPEC REPOS:
@@ -15,14 +17,16 @@ SPEC REPOS:
     - Alamofire
     - Masonry
     - MBProgressHUD
+    - MJRefresh
     - WebViewJavascriptBridge
 
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: e028e6119adddd7409cc862bb3ed87fb57b6d049
+PODFILE CHECKSUM: ada51c8c88542c4d37f4ccf595331b7cda2953b8
 
 COCOAPODS: 1.5.3
