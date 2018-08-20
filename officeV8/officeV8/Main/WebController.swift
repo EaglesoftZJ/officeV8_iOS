@@ -29,7 +29,6 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
         self.automaticallyAdjustsScrollViewInsets = false
         tabbarFrame = (self.tabBarController?.tabBar.frame)!
         
-        view.showToast()
         createWKweb()
     }
     
@@ -42,15 +41,15 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
         header.setRefreshingTarget(self, refreshingAction: #selector(webRefresh))
         wkWebView.scrollView.mj_header = header
         
-//        let htmlPath = "http://220.189.207.21:8581/mobile.html?isFrom=0"
-        let htmlPath = "http://127.0.0.1:8086/m/main"
+//        let htmlPath = "http://192.168.31.197:8086/m/main"
+        let htmlPath = app.userInfo.companyIP + "/mobile.html?isFrom=0"
         wkWebView.load(URLRequest.init(url:URL.init(string: htmlPath)!))
         
         WebViewJavascriptBridge.enableLogging()
         bridge = WebViewJavascriptBridge.init(forWebView: wkWebView)
         bridge.setWebViewDelegate(self)
         bridge.disableJavscriptAlertBoxSafetyTimeout()
-        
+
         bridge.registerHandler("moa.zh") { (data, responseCallback) in
             responseCallback!(General.user.object(forKey: General().info))
         }
@@ -88,6 +87,8 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
         }
         
         view.addSubview(wkWebView)
+        
+        view.showToast()
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -106,12 +107,25 @@ class WebController: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScript
         }
     }
     
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        let tel = navigationAction.request.url?.scheme
+        if tel == "tel" {
+            DispatchQueue.main.async {
+                UIApplication.shared.openURL(navigationAction.request.url!)
+                decisionHandler(WKNavigationActionPolicy.cancel)
+            }
+        } else {
+            decisionHandler(WKNavigationActionPolicy.allow)
+        }
+    }
+    
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         
     }
     
     @objc func webRefresh() {
-        wkWebView.reload()
+        let htmlPath = app.userInfo.companyIP + "/mobile.html?isFrom=0"
+        wkWebView.load(URLRequest.init(url:URL.init(string: htmlPath)!))
         wkWebView.scrollView.mj_header.endRefreshing()
     }
     
