@@ -10,10 +10,10 @@ import UIKit
 
 class SettingController: UIViewController,UITableViewDelegate,UITableViewDataSource,editDelegate {
     func editXx(xxArr: [String]) {
-        grxxDetail[6] = xxArr[0]
-        grxxDetail[7] = xxArr[1]
-        grxxDetail[8] = xxArr[2]
-        grxxDetail[9] = xxArr[3]
+        grxxDetail[7] = xxArr[0]
+        grxxDetail[8] = xxArr[1]
+        grxxDetail[9] = xxArr[2]
+        grxxDetail[10] = xxArr[3]
         table.reloadData()
     }
     
@@ -23,7 +23,7 @@ class SettingController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 10
+            return 11
         } else {
             return 1
         }
@@ -81,8 +81,8 @@ class SettingController: UIViewController,UITableViewDelegate,UITableViewDataSou
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(table)
         
-        grxxKey = ["账号", "姓名", "单位", "部门", "职务", "上级领导", "邮箱", "手机", "电话", "虚拟网"]
-        grxxDetail = [info["zh"],info["xm"], info["dwmc"], info["bmmc"], info["zwmc"], info["sjldxm"], info["yx"], info["sj"], info["dh"], info["xnw"]] as! [String]
+        grxxKey = ["账号", "姓名", "单位", "部门", "职务", "角色", "上级领导", "邮箱", "手机", "电话", "虚拟网"]
+        grxxDetail = [info["zh"],info["xm"], info["dwmc"], info["bmmc"], info["zwmc"], info["jsmc"], info["sjldxm"], info["yx"], info["sj"], info["dh"], info["xnw"]] as! [String]
         table.reloadData()
     }
     

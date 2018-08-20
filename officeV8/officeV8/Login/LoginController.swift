@@ -141,19 +141,19 @@ class LoginController: UIViewController, UITextFieldDelegate,companyListDelegate
         view.addSubview(companyBtn)
         view.addSubview(checkRemind)
         
-        backgroundImgView.image = UIImage.init(named: "backgroundImg.jpg")
-        backgroundImgView.frame = view.frame;
+        backgroundImgView.image = UIImage.init(named: "login.png")
+        backgroundImgView.frame = CGRect(x: 0, y: 0, width: General.kScreenWidth, height: General.kScreenHeight/3);
         
-        let userImgView = UIImageView(image: UIImage.init(named: "用户名.png"))
+        let userImgView = UIImageView(image: UIImage.init(named: "user.png"))
         userImgView.frame = CGRect(x:appStyle.kScaleW(w: 90),y:appStyle.kScaleH(h: 540),width:appStyle.kScaleW(w: 30),height:appStyle.kScaleH(h: 30))
         view.addSubview(userImgView)
         
         userField.frame = CGRect(x:appStyle.kScaleW(w: 145),y:appStyle.kScaleH(h: 500),width:appStyle.kScaleW(w: 515),height:appStyle.kScaleH(h: 108))
         userField.placeholder = "用户名"
-        userField.setValue(UIColor.white, forKeyPath: "_placeholderLabel.textColor")
+        userField.setValue(UIColor.gray, forKeyPath: "_placeholderLabel.textColor")
         userField.keyboardType = .default
         
-        let pwdImgView = UIImageView(image: UIImage.init(named: "密码.png"))
+        let pwdImgView = UIImageView(image: UIImage.init(named: "pass.png"))
         pwdImgView.frame = CGRect(x:appStyle.kScaleW(w: 90),y:appStyle.kScaleH(h: 648),width:appStyle.kScaleW(w: 30),height:appStyle.kScaleH(h: 30))
         view.addSubview(pwdImgView)
         
@@ -161,13 +161,13 @@ class LoginController: UIViewController, UITextFieldDelegate,companyListDelegate
         pwdField.placeholder = "密码"
         pwdField.isSecureTextEntry = true
         pwdField.clearButtonMode = UITextFieldViewMode.whileEditing
-        pwdField.setValue(UIColor.white, forKeyPath: "_placeholderLabel.textColor")
+        pwdField.setValue(UIColor.gray, forKeyPath: "_placeholderLabel.textColor")
         
-        let companyImgview = UIImageView(image: UIImage.init(named: "选择公司"))
+        let companyImgview = UIImageView(image: UIImage.init(named: "03.png"))
         companyImgview.frame = CGRect(x:appStyle.kScaleW(w: 90),y:appStyle.kScaleH(h: 756),width:appStyle.kScaleW(w: 30),height:appStyle.kScaleH(h: 30))
         view.addSubview(companyImgview)
         
-        companyLabel.textColor = UIColor.white
+        companyLabel.textColor = UIColor.black
         companyLabel.font = UIFont.systemFont(ofSize: 16)
         companyLabel.frame = CGRect(x:appStyle.kScaleW(w: 145),y:appStyle.kScaleH(h: 716),width:appStyle.kScaleW(w: 465),height:appStyle.kScaleH(h: 108))
         
@@ -184,7 +184,7 @@ class LoginController: UIViewController, UITextFieldDelegate,companyListDelegate
         checkRemind.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         checkRemind.imageEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
         checkRemind.setTitle("自动登录", for: .normal)
-        checkRemind.setTitleColor(UIColor.white, for: .normal)
+        checkRemind.setTitleColor(UIColor.gray, for: .normal)
         checkRemind.addTarget(self, action: #selector(checkAutoLogin(button:)), for: .touchUpInside)
         
         loginBtn.mas_makeConstraints { (make:MASConstraintMaker!) in
@@ -193,7 +193,7 @@ class LoginController: UIViewController, UITextFieldDelegate,companyListDelegate
             make.width.mas_equalTo()(appStyle.kScaleW(w: 553))
             make.height.mas_equalTo()(appStyle.kScaleH(h: 105))
         }
-        loginBtn.setBackgroundImage(UIImage.init(named: "loginBackground"), for: .normal)
+        loginBtn.setBackgroundImage(UIImage.init(named: "loginBtn.png"), for: .normal)
         loginBtn.setTitle("登录", for: .normal)
         loginBtn.setTitleColor(UIColor.white, for: .normal)
         loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
@@ -202,7 +202,7 @@ class LoginController: UIViewController, UITextFieldDelegate,companyListDelegate
     
     func createLine(h:CGFloat) {
         let line = UIView(frame:CGRect(x:appStyle.kScaleW(w: 90),y:appStyle.kScaleH(h: h),width:appStyle.kScaleW(w: 570),height:1))
-        line.backgroundColor = UIColor.white
+        line.backgroundColor = UIColor.gray
         view.addSubview(line)
     }
     
